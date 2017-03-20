@@ -13,6 +13,9 @@ class Transaction(models.Model):
     amount = models.DecimalField(decimal_places=4, max_digits=32)
     date = models.DateTimeField()
 
+    class Meta:
+        index_together = [('partner', 'date')]
+
     def __str__(self):
         return '{0} partner: {1}'.format(str(self.id), str(self.partner_id))
 
